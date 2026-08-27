@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#7a2848">
-  <meta name="description" content="Payment details for The Public Pentry fundraising op shop.">
-  <title>The Public Pentry | Fundraising Op Shop</title>
+  <meta name="description" content="Payment details for The Public Pantry fundraising op shop.">
+  <title>The Public Pantry | Fundraising Op Shop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
@@ -89,20 +89,48 @@
       box-shadow: 0 24px 60px rgba(84, 24, 47, 0.18);
     }
 
+    .card-petals {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .card-petal {
+      position: absolute;
+      top: -10%;
+      left: 0;
+      color: var(--card-petal-colour);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: var(--card-petal-size);
+      line-height: 1;
+      opacity: var(--card-petal-opacity);
+      text-shadow: 0 2px 8px color-mix(in srgb, currentColor 22%, transparent);
+      animation: card-petal-fall var(--card-petal-duration) linear infinite;
+      animation-delay: var(--card-petal-delay);
+      will-change: top, transform;
+    }
+
     .card::before {
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 3;
       width: 100%;
       height: 7px;
       content: "";
       background: linear-gradient(90deg, var(--berry), var(--gold), var(--berry));
+      pointer-events: none;
     }
 
     .hero {
+      position: relative;
+      z-index: 2;
       padding: 38px 28px 24px;
       text-align: center;
-      background: linear-gradient(180deg, #fff 0%, #fff8f8 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 248, 248, 0.82) 100%);
     }
 
     .shop-icon {
@@ -129,6 +157,8 @@
     }
 
     h1 {
+      position: relative;
+      z-index: 1;
       margin: 0;
       color: var(--berry-dark);
       font-family: var(--script);
@@ -136,6 +166,75 @@
       font-weight: 700;
       letter-spacing: 0;
       line-height: 1.08;
+    }
+
+    .title-wrap {
+      position: relative;
+      width: 100%;
+      padding: 12px 0 8px;
+    }
+
+    .title-flower {
+      position: absolute;
+      z-index: 2;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1;
+      opacity: 0.88;
+      text-shadow: 0 3px 9px color-mix(in srgb, currentColor 30%, transparent);
+      pointer-events: none;
+      animation: title-flower-float 3.8s ease-in-out infinite;
+    }
+
+    .title-flower-left {
+      top: 2px;
+      left: 1px;
+      color: #e6a1b8;
+      font-size: 28px;
+      transform: rotate(-12deg);
+    }
+
+    .title-flower-top {
+      top: -16px;
+      right: 20%;
+      color: #e9c77e;
+      font-size: 20px;
+      animation-delay: -1.4s;
+    }
+
+    .title-flower-right {
+      right: 1px;
+      bottom: 1px;
+      color: #c8acd9;
+      font-size: 29px;
+      animation-delay: -2.6s;
+      transform: rotate(12deg);
+    }
+
+    .title-flower-soft-left {
+      bottom: -11px;
+      left: 15%;
+      color: #f1c7d3;
+      font-size: 18px;
+      opacity: 0.76;
+      animation-delay: -0.8s;
+    }
+
+    .title-flower-soft-top {
+      top: -19px;
+      left: 38%;
+      color: #f2dba8;
+      font-size: 16px;
+      opacity: 0.78;
+      animation-delay: -2s;
+    }
+
+    .title-flower-soft-right {
+      top: -10px;
+      right: 8%;
+      color: #dfcdea;
+      font-size: 19px;
+      opacity: 0.8;
+      animation-delay: -3.1s;
     }
 
     .tagline {
@@ -160,6 +259,8 @@
     }
 
     .details {
+      position: relative;
+      z-index: 2;
       padding: 26px 22px 28px;
     }
 
@@ -336,6 +437,31 @@
       }
     }
 
+    @keyframes card-petal-fall {
+      0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+      }
+      50% {
+        transform: translateX(var(--card-drift-mid)) rotate(190deg);
+      }
+      100% {
+        top: 108%;
+        transform: translateX(var(--card-drift)) rotate(390deg);
+      }
+    }
+
+    @keyframes title-flower-float {
+      0%, 100% {
+        translate: 0 0;
+        rotate: -4deg;
+      }
+      50% {
+        translate: 0 -7px;
+        rotate: 7deg;
+      }
+    }
+
     @media (max-width: 360px) {
       body {
         padding: 14px 10px;
@@ -378,10 +504,20 @@
 
   <main class="page-shell">
     <section class="card" aria-labelledby="shop-title">
+      <div class="card-petals" id="card-petals" aria-hidden="true"></div>
+
       <header class="hero">
         <div class="shop-icon" aria-hidden="true">🛍️</div>
         <p class="eyebrow">Thank you for shopping at</p>
-        <h1 id="shop-title">The Public Pantry</h1>
+        <div class="title-wrap">
+          <span class="title-flower title-flower-left" aria-hidden="true">✿</span>
+          <span class="title-flower title-flower-top" aria-hidden="true">❀</span>
+          <span class="title-flower title-flower-soft-left" aria-hidden="true">❁</span>
+          <span class="title-flower title-flower-soft-top" aria-hidden="true">✿</span>
+          <span class="title-flower title-flower-soft-right" aria-hidden="true">❀</span>
+          <h1 id="shop-title">The Public Pantry</h1>
+          <span class="title-flower title-flower-right" aria-hidden="true">❁</span>
+        </div>
         <p class="tagline">Pre-loved treasures. Community spirit. A meaningful difference.</p>
 
         <p class="quote">
@@ -445,6 +581,7 @@
 
   <script>
     const petalsContainer = document.getElementById("petals");
+    const cardPetalsContainer = document.getElementById("card-petals");
     const flowerShapes = ["❀", "✿", "❁"];
     const flowerColours = ["#cf5f8a", "#d89a3d", "#9b72bd"];
 
@@ -462,6 +599,22 @@
       petal.style.setProperty("--drift-mid", `${drift * 0.45}px`);
       petal.style.setProperty("--drift", `${drift}px`);
       petalsContainer.appendChild(petal);
+    }
+
+    for (let index = 0; index < 22; index += 1) {
+      const flower = document.createElement("span");
+      flower.className = "card-petal";
+      flower.textContent = flowerShapes[index % flowerShapes.length];
+      flower.style.left = `${3 + Math.random() * 92}%`;
+      flower.style.setProperty("--card-petal-colour", flowerColours[index % flowerColours.length]);
+      flower.style.setProperty("--card-petal-opacity", `${0.12 + Math.random() * 0.12}`);
+      flower.style.setProperty("--card-petal-size", `${17 + Math.random() * 15}px`);
+      flower.style.setProperty("--card-petal-duration", `${9 + Math.random() * 8}s`);
+      flower.style.setProperty("--card-petal-delay", `${-Math.random() * 17}s`);
+      const cardDrift = -42 + Math.random() * 84;
+      flower.style.setProperty("--card-drift-mid", `${cardDrift * 0.5}px`);
+      flower.style.setProperty("--card-drift", `${cardDrift}px`);
+      cardPetalsContainer.appendChild(flower);
     }
 
     const statusMessage = document.getElementById("copy-status");
