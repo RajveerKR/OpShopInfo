@@ -6,6 +6,9 @@
   <meta name="theme-color" content="#7a2848">
   <meta name="description" content="Payment details for The Public Pentry fundraising op shop.">
   <title>The Public Pentry | Fundraising Op Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -18,6 +21,7 @@
       --muted: #75656c;
       --white: #ffffff;
       --success: #287a54;
+      --script: "Dancing Script", "Segoe Print", "Bradley Hand", cursive;
     }
 
     * {
@@ -127,11 +131,11 @@
     h1 {
       margin: 0;
       color: var(--berry-dark);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(32px, 10vw, 44px);
+      font-family: var(--script);
+      font-size: clamp(38px, 11vw, 50px);
       font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1;
+      letter-spacing: 0;
+      line-height: 1.08;
     }
 
     .tagline {
@@ -148,10 +152,11 @@
       border-radius: 16px;
       color: var(--berry-dark);
       background: #fff1f4;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 16px;
-      font-style: italic;
-      line-height: 1.55;
+      font-family: var(--script);
+      font-size: 19px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.45;
     }
 
     .details {
@@ -289,8 +294,9 @@
     .thank-you {
       margin: 13px 0 0;
       color: var(--berry);
-      font-size: 13px;
-      font-weight: 750;
+      font-family: var(--script);
+      font-size: 19px;
+      font-weight: 700;
       text-align: center;
     }
 
